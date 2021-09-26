@@ -47,12 +47,26 @@
       "tags": [],
       "implicitDependencies": ["app-two"]
     },
+    "appthree": {
+      "tags": []
+    },
+    "appthree-e2e": {
+      "tags": [],
+      "implicitDependencies": ["appthree"]
+    },
     "scp": {
       "tags": []
     },
     "scp-e2e": {
       "tags": [],
       "implicitDependencies": ["scp"]
+    },
+    "scp2": {
+      "tags": []
+    },
+    "scp2-e2e": {
+      "tags": [],
+      "implicitDependencies": ["scp2"]
     },
     "ui": {
       "tags": []
