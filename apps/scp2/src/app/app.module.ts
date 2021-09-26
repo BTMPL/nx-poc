@@ -8,17 +8,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { SubAppComponent } from './sub-app/sub-app.component';
 
 const routes: Routes = [
+  {
+    path: 'app/app-three',
+    loadChildren: () =>
+      import('appthree/Module').then((m) => m.RemoteEntryModule),
+  },
   { path: 'app/:app', component: SubAppComponent },
-  {
-    path: 'appthree',
-    loadChildren: () =>
-      import('appthree/Module').then((m) => m.RemoteEntryModule),
-  },
-  {
-    path: 'appthree',
-    loadChildren: () =>
-      import('appthree/Module').then((m) => m.RemoteEntryModule),
-  },
 ];
 
 @NgModule({

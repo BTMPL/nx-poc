@@ -9,7 +9,7 @@ sharedMappings.register(path.join(__dirname, '../../tsconfig.base.json'), [
 
 module.exports = {
   output: {
-    uniqueName: 'scp2',
+    uniqueName: 'login',
     publicPath: 'auto',
   },
   optimization: {
@@ -23,9 +23,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      remotes: {
-        appthree: 'appthree@http://localhost:4201/remoteEntry.js',
-        login: 'login@http://localhost:4202/remoteEntry.js',
+      name: 'login',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Module': 'apps/login/src/app/remote-entry/entry.module.ts',
       },
       shared: {
         '@angular/core': { singleton: true, strictVersion: true },
