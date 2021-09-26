@@ -54,13 +54,6 @@
       "tags": [],
       "implicitDependencies": ["appthree"]
     },
-    "login": {
-      "tags": []
-    },
-    "login-e2e": {
-      "tags": [],
-      "implicitDependencies": ["login"]
-    },
     "scp": {
       "tags": []
     },
