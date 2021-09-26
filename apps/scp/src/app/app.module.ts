@@ -4,10 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 
 import { UiModule } from '@hsbc/ui';
+import { RouterModule, Routes } from '@angular/router';
+import { SubAppComponent } from './sub-app/sub-app.component';
+
+const routes: Routes = [{ path: 'app/:app', component: SubAppComponent }];
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [BrowserModule, UiModule],
+  declarations: [AppComponent, SubAppComponent],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes, { useHash: true }),
+    UiModule,
+  ],
+  exports: [RouterModule],
   providers: [],
   bootstrap: [AppComponent],
 })

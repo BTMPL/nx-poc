@@ -10,13 +10,9 @@ export class ButtonComponent {
   // eslint-disable-next-line @angular-eslint/no-output-on-prefix
   @Output() onClick = new EventEmitter<void>();
 
-  constructor() {
-    console.log(this);
-  }
+  constructor() {}
 
   handleClick() {
-    console.log('click');
-    console.log(this);
     this.onClick.emit();
   }
 }

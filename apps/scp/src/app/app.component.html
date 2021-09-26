@@ -1,2 +1,9 @@
-<hsbc-button label="Click me" (onClick)="clickTest()"></hsbc-button>
-<div>hello</div>
+<div class="container">
+  <div class="nav">
+    <hsbc-button label="Load app 1" (onClick)="loadApp('app-one')"></hsbc-button>
+    <hsbc-button label="Load app 2" (onClick)="loadApp('app-two')"></hsbc-button>
+  </div>
+
+
+  <router-outlet></router-outlet>
+</div>

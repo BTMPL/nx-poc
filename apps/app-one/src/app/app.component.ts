@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'hsbc-root',
@@ -7,10 +6,5 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'scp';
-  constructor(private router: Router) {}
-
-  loadApp(appName = '') {
-    this.router.navigate([`/app/${appName}`]);
-  }
+  title = 'app-one';
 }
