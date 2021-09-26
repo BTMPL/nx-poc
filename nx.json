@@ -68,13 +68,6 @@
       "tags": [],
       "implicitDependencies": ["scp"]
     },
-    "scp2": {
-      "tags": []
-    },
-    "scp2-e2e": {
-      "tags": [],
-      "implicitDependencies": ["scp2"]
-    },
     "ui": {
       "tags": []
     },

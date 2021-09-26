@@ -7,7 +7,14 @@ import { UiModule } from '@hsbc/ui';
 import { RouterModule, Routes } from '@angular/router';
 import { SubAppComponent } from './sub-app/sub-app.component';
 
-const routes: Routes = [{ path: 'app/:app', component: SubAppComponent }];
+const routes: Routes = [
+  {
+    path: 'app/app-three',
+    loadChildren: () =>
+      import('appthree/Module').then((m) => m.RemoteEntryModule),
+  },
+  { path: 'app/:app', component: SubAppComponent },
+];
 
 @NgModule({
   declarations: [AppComponent, SubAppComponent],

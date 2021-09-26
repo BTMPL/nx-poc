@@ -9,7 +9,7 @@ sharedMappings.register(path.join(__dirname, '../../tsconfig.base.json'), [
 
 module.exports = {
   output: {
-    uniqueName: 'scp2',
+    uniqueName: 'scp',
     publicPath: 'auto',
   },
   optimization: {
