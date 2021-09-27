@@ -25,7 +25,6 @@ module.exports = {
     new ModuleFederationPlugin({
       remotes: {
         appthree: 'appthree@http://localhost:4201/remoteEntry.js',
-        login: 'login@http://localhost:4202/remoteEntry.js',
       },
       shared: {
         '@angular/core': { singleton: true, strictVersion: true },

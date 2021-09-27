@@ -1,105 +1,102 @@
+# Monorepo setup
 
+This project attempts to demonstrate the following:
 
-# Hsbc
+- monorepo setup
+- microfrontend integration
+- "shared" service used to pass data between applications
+- updating the router from outside of Angular context
 
-This project was generated using [Nx](https://nx.dev).
+The technology used is Angular and [NX](https://nx.dev).
 
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="450"></p>
+## Installation
 
-🔎 **Smart, Extensible Build Framework**
+To install the project use `npm`:
 
-## Quick Start & Documentation
+```
+npm install
+```
 
-[Nx Documentation](https://nx.dev/angular)
+This should install all the needed tooling. You can opt into installing `nx` package globally, or invoke it with `npx` by calling `npx nx ....`
 
-[10-minute video showing all Nx features](https://nx.dev/getting-started/intro)
+## Contents
 
-[Interactive Tutorial](https://nx.dev/tutorial/01-create-application)
+The project consists of the following:
 
-## Adding capabilities to your workspace
+### applications
 
-Nx supports many plugins which add capabilities for developing different types of applications and different tools.
+#### app-one and app-two
 
-These capabilities include generating applications, libraries, etc as well as the devtools to test, and build projects as well.
+Standard Angular applications. The `app-one` application additionally imports the shared `UserService` library.
 
-Below are our core plugins:
+#### appthree
 
-- [Angular](https://angular.io)
-  - `ng add @nrwl/angular`
-- [React](https://reactjs.org)
-  - `ng add @nrwl/react`
-- Web (no framework frontends)
-  - `ng add @nrwl/web`
-- [Nest](https://nestjs.com)
-  - `ng add @nrwl/nest`
-- [Express](https://expressjs.com)
-  - `ng add @nrwl/express`
-- [Node](https://nodejs.org)
-  - `ng add @nrwl/node`
+A Angular application with an exposed `webpack.config.js` file which allows it to implement the [Angular module federation](https://www.angulararchitects.io/en/aktuelles/the-microfrontend-revolution-part-2-module-federation-with-angular/) mechanism in order to allow itself to be loaded by the shell application
 
-There are also many [community plugins](https://nx.dev/community) you could add.
+See [this article](https://nx.dev/l/a/guides/setup-mfe-with-angular) for more information on how to setup module federation inside nx workspace app.
 
-## Generate an application
+Please note the name of the module should be alpha-numeric only as otherwise webpack / tsc will report errors and prevent you from bundling the entry point.
 
-Run `ng g @nrwl/angular:app my-app` to generate an application.
+#### scp
 
-> You can use any of the plugins above to generate applications as well.
+This is the "shell" of the application, used to load and orchestrate all the other applications. It will use hash routing to load iframes for `app-one` and `app-two` as well as consume `appthree` as a federated module.
 
-When using Nx, you can create multiple applications and libraries in the same workspace.
+The application comes with an exposed `webpack.config.js` file which allows it to resolve the federated module.
 
-## Generate a library
+### libraries
 
-Run `ng g @nrwl/angular:lib my-lib` to generate a library.
+#### ui
 
-> You can also use any of the plugins above to generate libraries as well.
+A barebones UI library providing the `hsbc-button` component. It also comes configured with a storybook setup. The library module (`UiModule`) is consumed by the shell (`scp`) application.
 
-Libraries are shareable across libraries and applications. They can be imported from `@hsbc/mylib`.
+#### services
 
-## Development server
+A example Angular services library providing the `UserService` to expose a very simple demo of a login / logout function with the mechanism used to help propagate the data between both federated and iframe-embeded applications.
 
-Run `ng serve my-app` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+Please see the comments in the service for more info on implementation details.
 
-## Code scaffolding
+## Starting the project
 
-Run `ng g component my-component --project=my-app` to generate a new component.
+You can start all the applications manually:
 
-## Build
+```
+// run the "application 1"
+nx run app-one:serve --port=3002
 
-Run `ng build my-app` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+// run the "application 2"
+nx run app-two:serve --port=3001
 
-## Running unit tests
+// run the "application 3", expose the remote entry point
+nx run appthree:serve --port=4201
 
-Run `ng test my-app` to execute the unit tests via [Jest](https://jestjs.io).
+// run the "shell application"
+nx run scp:serve --port=4200
+```
 
-Run `nx affected:test` to execute the unit tests affected by a change.
+or start all of them with a single command:
 
-## Running end-to-end tests
+```
+npm run dev
+```
 
-Run `ng e2e my-app` to execute the end-to-end tests via [Cypress](https://www.cypress.io).
+## Additional tools
 
-Run `nx affected:e2e` to execute the end-to-end tests affected by a change.
+The project comes preconfigured with a storybook:
 
-## Understand your workspace
+```
+nx run ui:storybook
+```
 
-Run `nx dep-graph` to see a diagram of the dependencies of your projects.
+and the default nx dependency grapher:
 
-## Further help
+```
+nx dep-graph
+```
 
-Visit the [Nx Documentation](https://nx.dev/angular) to learn more.
+Please note you will need to restart the dependency grapher if you add/remove applications and libraries to the project as it will not reflect added/removed content on the fly. Any connections between existing content will be shown without the need to restart.
 
+## Not covered
 
+### shared state
 
-
-
-
-## ☁ Nx Cloud
-
-### Distributed Computation Caching & Distributed Task Execution
-
-<p style="text-align: center;"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-cloud-card.png"></p>
-
-Nx Cloud pairs with Nx in order to enable you to build and test code more rapidly, by up to 10 times. Even teams that are new to Nx can connect to Nx Cloud and start saving time instantly.
-
-Teams using Nx gain the advantage of building full-stack applications with their preferred framework alongside Nx’s advanced code generation and project dependency graph, plus a unified experience for both frontend and backend developers.
-
-Visit [Nx Cloud](https://nx.app/) to learn more.
+The `UserService` uses local storage to synchronize data across both federated modules and applications loaded as iframe. If we were to only support module federation, we could update the code so that single service instance is created and the data is "just shared" - see ["Issues with Sharing Code and Data"](https://www.angulararchitects.io/aktuelles/pitfalls-with-module-federation-and-angular/)
