@@ -13,7 +13,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "hsbc",
+            "prefix": "poc",
             "style": "camelCase"
           }
         ],
@@ -21,7 +21,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "hsbc",
+            "prefix": "poc",
             "style": "kebab-case"
           }
         ]

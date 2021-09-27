@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'hsbc-appthree-entry',
-  template: `<hsbc-app-three></hsbc-app-three>`,
+  selector: 'poc-appthree-entry',
+  template: `<poc-app-three></poc-app-three>`,
 })
 export class RemoteEntryComponent {}

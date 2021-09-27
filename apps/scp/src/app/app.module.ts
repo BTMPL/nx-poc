@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
-import { UiModule } from '@hsbc/ui';
+import { UiModule } from '@poc/ui';
 import { RouterModule, Routes } from '@angular/router';
 import { SubAppComponent } from './sub-app/sub-app.component';
 

@@ -5,7 +5,7 @@
       "projectType": "application",
       "root": "apps/app-one",
       "sourceRoot": "apps/app-one/src",
-      "prefix": "hsbc",
+      "prefix": "poc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -123,7 +123,7 @@
       "projectType": "application",
       "root": "apps/app-two",
       "sourceRoot": "apps/app-two/src",
-      "prefix": "hsbc",
+      "prefix": "poc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -241,7 +241,7 @@
       "projectType": "application",
       "root": "apps/appthree",
       "sourceRoot": "apps/appthree/src",
-      "prefix": "hsbc",
+      "prefix": "poc",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:webpack-browser",
@@ -368,7 +368,7 @@
       "projectType": "application",
       "root": "apps/scp",
       "sourceRoot": "apps/scp/src",
-      "prefix": "hsbc",
+      "prefix": "poc",
       "architect": {
         "build": {
           "builder": "@nrwl/angular:webpack-browser",
@@ -499,7 +499,7 @@
       "projectType": "library",
       "root": "libs/services",
       "sourceRoot": "libs/services/src",
-      "prefix": "hsbc",
+      "prefix": "poc",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",
@@ -524,7 +524,7 @@
       "projectType": "library",
       "root": "libs/ui",
       "sourceRoot": "libs/ui/src",
-      "prefix": "hsbc",
+      "prefix": "poc",
       "architect": {
         "test": {
           "builder": "@nrwl/jest:jest",

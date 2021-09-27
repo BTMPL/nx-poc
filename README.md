@@ -47,7 +47,7 @@ The application comes with an exposed `webpack.config.js` file which allows it t
 
 #### ui
 
-A barebones UI library providing the `hsbc-button` component. It also comes configured with a storybook setup. The library module (`UiModule`) is consumed by the shell (`scp`) application.
+A barebones UI library providing the `poc-button` component. It also comes configured with a storybook setup. The library module (`UiModule`) is consumed by the shell (`scp`) application.
 
 #### services
 

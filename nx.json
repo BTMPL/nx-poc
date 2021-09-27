@@ -1,5 +1,5 @@
 {
-  "npmScope": "hsbc",
+  "npmScope": "poc",
   "affected": {
     "defaultBase": "master"
   },

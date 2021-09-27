@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@hsbc/services": ["libs/services/src/index.ts"],
-      "@hsbc/ui": ["libs/ui/src/index.ts"]
+      "@poc/services": ["libs/services/src/index.ts"],
+      "@poc/ui": ["libs/ui/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

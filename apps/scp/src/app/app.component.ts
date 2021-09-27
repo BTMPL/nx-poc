@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from '@hsbc/services';
+import { UserService } from '@poc/services';
 
 @Component({
-  selector: 'hsbc-root',
+  selector: 'poc-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })

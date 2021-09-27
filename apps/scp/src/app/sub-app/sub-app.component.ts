@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { UserService } from '@hsbc/services';
+import { UserService } from '@poc/services';
 
 const apps: Record<string, string> = {
   'app-one': 'http://localhost:3002/',
@@ -9,7 +9,7 @@ const apps: Record<string, string> = {
 };
 
 @Component({
-  selector: 'hsbc-sub-app',
+  selector: 'poc-sub-app',
   templateUrl: './sub-app.component.html',
   styleUrls: ['./sub-app.component.css'],
 })
