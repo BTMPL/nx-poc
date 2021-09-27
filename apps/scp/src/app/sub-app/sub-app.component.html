@@ -1,1 +1,1 @@
-<iframe *ngIf="appUrl" [src]="appUrl"></iframe>
+<iframe *ngIf="appUrl" [src]="appUrl" (load)="announce()"></iframe>

@@ -1,8 +1,14 @@
 <div class="container">
   <div class="nav">
-    <hsbc-button label="Load app 1" (onClick)="loadApp('app-one')"></hsbc-button>
-    <hsbc-button label="Load app 2" (onClick)="loadApp('app-two')"></hsbc-button>
-    <hsbc-button label="Load app 3" (onClick)="loadApp('app-three')"></hsbc-button>
+    <div>
+      <hsbc-button label="Load app 1" (onClick)="loadApp('app-one')"></hsbc-button>
+      <hsbc-button label="Load app 2" (onClick)="loadApp('app-two')"></hsbc-button>
+      <hsbc-button label="Load app 3" (onClick)="loadApp('app-three')"></hsbc-button>
+    </div>
+    <div>
+      <hsbc-button label="Sign in" *ngIf="!currentUser" (onClick)="signIn()"></hsbc-button>
+      <hsbc-button label="Sign out" *ngIf="currentUser" (onClick)="signOut()"></hsbc-button>
+    </div>
   </div>
 
 

@@ -61,6 +61,9 @@
       "tags": [],
       "implicitDependencies": ["scp"]
     },
+    "services": {
+      "tags": []
+    },
     "ui": {
       "tags": []
     },

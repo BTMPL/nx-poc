@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UserService } from '@hsbc/services';
 
 @Component({
   selector: 'hsbc-root',
@@ -8,9 +9,22 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'scp';
-  constructor(private router: Router) {}
+  currentUser: string | undefined = undefined;
+  constructor(private router: Router, private user: UserService) {
+    user.getUser().subscribe((user) => {
+      this.currentUser = user;
+    });
+  }
 
   loadApp(appName = '') {
     this.router.navigate([`/app/${appName}`]);
+  }
+
+  signIn() {
+    this.user.signIn();
+  }
+
+  signOut() {
+    this.user.signOut();
   }
 }
